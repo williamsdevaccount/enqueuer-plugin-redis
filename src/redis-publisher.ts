@@ -20,14 +20,14 @@ export class RedisPublisher extends Publisher {
                     }
                 });
                 setTimeout(() => resolve(), this.responseTimeout || 1000);
-                subscriber.on('message',(channel: string, payload: string) => {
+                subscriber.on('message', (channel: string, payload: string) => {
                     this.messageReceived = {payload, channel};
                     subscriber.disconnect();
                     publisher.disconnect();
                     resolve();
                 });
             } catch (e) {
-              reject(e);
+                reject(e);
             }
         });
     }
