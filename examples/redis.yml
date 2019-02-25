@@ -1,0 +1,30 @@
+publishers:
+  - type: redis
+    name: publisher description
+    connectionOptions:
+      - host: localhost
+        port: 6379
+    payload: enqueuer
+    responseTimeout: 2000
+    channel: test
+    onMessageReceived:
+      assertions:
+        - expect: payload
+          toBeEqualTo: `enqueuer`
+subscriptions:
+  - type: redis
+    name: my subscription
+    timeout: 5000
+    channel: test
+    connectionOptions:
+      - host: localhost
+        port: 6379
+    onMessageReceived:
+      script: payload = Buffer.from(message.payload);
+      assertions:
+        - name: Payload
+          expect: payload
+          toBeEqualTo: `enqueuer`
+        - name: Beatles song
+          expect: payload.length
+          toBeGreaterThan: 5
