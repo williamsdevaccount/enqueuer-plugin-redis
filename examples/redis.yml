@@ -2,8 +2,8 @@ publishers:
   - type: redis
     name: publisher description
     connectionOptions:
-      - host: localhost
-        port: 6379
+      host: localhost
+      port: 6379
     payload: enqueuer
     responseTimeout: 2000
     channel: test
@@ -17,8 +17,8 @@ subscriptions:
     timeout: 5000
     channel: test
     connectionOptions:
-      - host: localhost
-        port: 6379
+      host: localhost
+      port: 6379
     onMessageReceived:
       script: payload = Buffer.from(message.payload);
       assertions:
