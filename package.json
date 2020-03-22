@@ -29,7 +29,7 @@
   "homepage": "https://github.com/williamsdevaccount/enqueuer-plugin-redis#readme",
   "devDependencies": {
     "@types/ioredis": "^4.0.8",
-    "@types/node": "^11.9.4",
+    "@types/node": "^13.9.3",
     "ts-node": "^8.0.2",
     "tslint": "^5.11.0",
     "typescript": "^3.0.1"
